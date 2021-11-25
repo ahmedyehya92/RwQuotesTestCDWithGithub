@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var quotesViewModel: QuotesViewModel
     private lateinit var quoteAdapter: QuoteAdapter
 
-    private lateinit var activityMainBinding: ActivityMainBinding
+     private lateinit var activityMainBinding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
