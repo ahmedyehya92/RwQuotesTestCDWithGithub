@@ -24,6 +24,8 @@ jobs:
       - name: Apply Formatted Files
         run: |
           echo "Committing Formatted Files"
+          git config --global user.email "ahmedyehya1992@gmail.com"
+          git config --global user.name "ahmedyehya92"
           git add .
           git commit -m "Fixing Formats"
           git push
