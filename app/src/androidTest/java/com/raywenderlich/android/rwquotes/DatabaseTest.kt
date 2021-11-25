@@ -43,7 +43,6 @@ import org.junit.Before
 import org.junit.runner.RunWith
 import java.io.IOException
 
-
 /**
  * Created by Enzo Lizama Paredes on 7/25/20.
  * Contact: lizama.enzo@gmail.com
@@ -52,20 +51,21 @@ import java.io.IOException
 @RunWith(AndroidJUnit4::class)
 abstract class DatabaseTest {
 
-  protected lateinit var appDatabase: RWQuotesDatabase
+    protected lateinit var appDatabase: RWQuotesDatabase
 
-  @Before
-  fun initDb() {
-    appDatabase = Room.inMemoryDatabaseBuilder(
-        ApplicationProvider.getApplicationContext(),
-        RWQuotesDatabase::class.java)
-        .allowMainThreadQueries()
-        .build()
-  }
+    @Before
+    fun initDb() {
+        appDatabase = Room.inMemoryDatabaseBuilder(
+            ApplicationProvider.getApplicationContext(),
+            RWQuotesDatabase::class.java
+        )
+            .allowMainThreadQueries()
+            .build()
+    }
 
-  @After
-  @Throws(IOException::class)
-  fun closeDb() {
-    appDatabase.close()
-  }
+    @After
+    @Throws(IOException::class)
+    fun closeDb() {
+        appDatabase.close()
+    }
 }

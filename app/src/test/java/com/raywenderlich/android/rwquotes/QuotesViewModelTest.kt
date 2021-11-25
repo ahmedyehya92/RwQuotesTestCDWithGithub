@@ -36,7 +36,6 @@ package com.raywenderlich.android.rwquotes
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
 import com.raywenderlich.android.rwquotes.data.Quote
 import com.raywenderlich.android.rwquotes.data.QuotesRepositoryImpl
 import com.raywenderlich.android.rwquotes.ui.viewmodel.QuotesViewModel
@@ -49,7 +48,6 @@ import org.mockito.Mock
 import org.mockito.Mockito.spy
 import org.mockito.MockitoAnnotations
 
-
 /**
  * Created by Enzo Lizama Paredes on 7/25/20.
  * Contact: lizama.enzo@gmail.com
@@ -58,76 +56,80 @@ import org.mockito.MockitoAnnotations
 @ExperimentalCoroutinesApi
 class QuotesViewModelTest {
 
-  @Mock
-  private lateinit var viewModel: QuotesViewModel
+    @Mock
+    private lateinit var viewModel: QuotesViewModel
 
-  @Mock
-  private lateinit var repositoryImpl: QuotesRepositoryImpl
+    @Mock
+    private lateinit var repositoryImpl: QuotesRepositoryImpl
 
-  @get:Rule
-  var instantExecutorRule = InstantTaskExecutorRule()
+    @get:Rule
+    var instantExecutorRule = InstantTaskExecutorRule()
 
-  private lateinit var isLoadingLiveData: LiveData<Boolean>
+    private lateinit var isLoadingLiveData: LiveData<Boolean>
 
-  /**
-   * Setup values before init tests
-   *
-   */
-  @Before
-  fun setup() {
-    MockitoAnnotations.initMocks(this)
+    /**
+     * Setup values before init tests
+     *
+     */
+    @Before
+    fun setup() {
+        MockitoAnnotations.initMocks(this)
 
-    viewModel = spy(QuotesViewModel(repositoryImpl))
-    isLoadingLiveData = viewModel.dataLoading
-  }
+        viewModel = spy(QuotesViewModel(repositoryImpl))
+        isLoadingLiveData = viewModel.dataLoading
+    }
 
-  /**
-   * Test asserting values for [LiveData] items on [QuotesViewModel] to insert [Quote]
-   *
-   */
-  @Test
-  fun `Assert loading values are correct fetching quotes`() {
-    val testQuote = Quote(id = 1, text = "Hello World!", author = "Ray Wenderlich",
-        date = "27/12/1998")
-    var isLoading = isLoadingLiveData.value
-    isLoading?.let { assertTrue(it) }
-    viewModel.insertQuote(testQuote)
-    isLoading = isLoadingLiveData.value
-    assertNotNull(isLoading)
-    isLoading?.let { assertFalse(it) }
-  }
+    /**
+     * Test asserting values for [LiveData] items on [QuotesViewModel] to insert [Quote]
+     *
+     */
+    @Test
+    fun `Assert loading values are correct fetching quotes`() {
+        val testQuote = Quote(
+            id = 1, text = "Hello World!", author = "Ray Wenderlich",
+            date = "27/12/1998"
+        )
+        var isLoading = isLoadingLiveData.value
+        isLoading?.let { assertTrue(it) }
+        viewModel.insertQuote(testQuote)
+        isLoading = isLoadingLiveData.value
+        assertNotNull(isLoading)
+        isLoading?.let { assertFalse(it) }
+    }
 
-  /**
-   * Test asserting values for [LiveData] items on [QuotesViewModel] to delete [Quote]
-   *
-   */
-  @Test
-  fun `Assert loading values are correct deleting quote`() {
-    val testQuote = Quote(id = 1, text = "Hello World!", author = "Ray Wenderlich",
-        date = "27/12/1998")
-    var isLoading = isLoadingLiveData.value
-    isLoading?.let { assertTrue(it) }
-    viewModel.delete(testQuote)
-    isLoading = isLoadingLiveData.value
-    assertNotNull(isLoading)
-    isLoading?.let { assertFalse(it) }
-  }
+    /**
+     * Test asserting values for [LiveData] items on [QuotesViewModel] to delete [Quote]
+     *
+     */
+    @Test
+    fun `Assert loading values are correct deleting quote`() {
+        val testQuote = Quote(
+            id = 1, text = "Hello World!", author = "Ray Wenderlich",
+            date = "27/12/1998"
+        )
+        var isLoading = isLoadingLiveData.value
+        isLoading?.let { assertTrue(it) }
+        viewModel.delete(testQuote)
+        isLoading = isLoadingLiveData.value
+        assertNotNull(isLoading)
+        isLoading?.let { assertFalse(it) }
+    }
 
-  /**
-   * Test asserting values for [LiveData] items on [QuotesViewModel] to update [Quote]
-   *
-   */
-  @Test
-  fun `Assert loading values are correct updating quote`() {
-    val testQuote = Quote(id = 1, text = "Hello World!", author = "Ray Wenderlich",
-        date = "27/12/1998")
-    var isLoading = isLoadingLiveData.value
-    isLoading?.let { assertTrue(it) }
-    viewModel.updateQuote(testQuote)
-    isLoading = isLoadingLiveData.value
-    assertNotNull(isLoading)
-    isLoading?.let { assertFalse(it) }
-  }
-
-
+    /**
+     * Test asserting values for [LiveData] items on [QuotesViewModel] to update [Quote]
+     *
+     */
+    @Test
+    fun `Assert loading values are correct updating quote`() {
+        val testQuote = Quote(
+            id = 1, text = "Hello World!", author = "Ray Wenderlich",
+            date = "27/12/1998"
+        )
+        var isLoading = isLoadingLiveData.value
+        isLoading?.let { assertTrue(it) }
+        viewModel.updateQuote(testQuote)
+        isLoading = isLoadingLiveData.value
+        assertNotNull(isLoading)
+        isLoading?.let { assertFalse(it) }
+    }
 }
