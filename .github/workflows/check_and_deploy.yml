@@ -14,6 +14,12 @@ jobs:
         run:  |
           curl -sSLO https://github.com/pinterest/ktlint/releases/download/0.40.0/ktlint && chmod a+x ktlint
           ./ktlint -F
+          echo "Committing Formatted Files"
+          git config --global user.email "ahmedyehya1992@gmail.com"
+          git config --global user.name "ahmedyehya92"
+          git add .
+          git commit -m "Fixing Formats"
+          git push
 
 
   add_format_edit:
