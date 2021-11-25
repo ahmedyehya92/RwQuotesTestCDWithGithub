@@ -11,10 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get Kotlin Code Formatter
+        uses: actions/checkout@v2
         run:  |
           curl -sSLO https://github.com/pinterest/ktlint/releases/download/0.40.0/ktlint && chmod a+x ktlint
           ./ktlint -F
-
+          echo "Committing Formatted Files"
+          git add .
+          git comit -m "Fixing Formats"
+          git push
   ## 3
   unit_tests:
     needs: [ code_style_format ]
