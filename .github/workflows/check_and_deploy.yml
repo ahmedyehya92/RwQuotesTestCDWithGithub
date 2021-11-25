@@ -22,8 +22,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Apply Formatted Files
-       run: |
-         echo "Committing Formatted Files"
-                   git add .
-                   git comit -m "Fixing Formats"
-                   git push
+        run: |
+          echo "Committing Formatted Files"
+                    git add .
+                    git comit -m "Fixing Formats"
+                    git push
