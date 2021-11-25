@@ -15,7 +15,15 @@ jobs:
         run:  |
           curl -sSLO https://github.com/pinterest/ktlint/releases/download/0.40.0/ktlint && chmod a+x ktlint
           ./ktlint -F
-          echo "Committing Formatted Files"
-          git add .
-          git comit -m "Fixing Formats"
-          git push
+
+
+  add_format_edit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Apply Formatted Files
+       run: |
+         echo "Committing Formatted Files"
+                   git add .
+                   git comit -m "Fixing Formats"
+                   git push
