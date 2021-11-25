@@ -10,6 +10,7 @@ jobs:
   code_style_format:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Get Kotlin Code Formatter
         run:  |
           curl -sSLO https://github.com/pinterest/ktlint/releases/download/0.40.0/ktlint && chmod a+x ktlint
