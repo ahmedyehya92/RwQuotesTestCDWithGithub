@@ -13,8 +13,11 @@ jobs:
       - name: Get Kotlin Code Formatter
         run:  |
           curl -sSLO https://github.com/pinterest/ktlint/releases/download/0.40.0/ktlint && chmod a+x ktlint
-      - name: Reformat Code Style
-        run: ./ktlint -F
+          ./ktlint -F
+          echo "Committing Formatted Files"
+          git add .
+          git comit -m "Fixing Formats"
+          git push
   ## 3
   unit_tests:
     needs: [ code_style_format ]
