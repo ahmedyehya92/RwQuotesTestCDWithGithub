@@ -42,7 +42,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
-
 /**
  * Created by Enzo Lizama Paredes on 7/24/20.
  * Contact: lizama.enzo@gmail.com
@@ -50,34 +49,33 @@ import kotlin.coroutines.CoroutineContext
 
 class QuotesRepositoryImpl(application: Application) : QuotesRepository, CoroutineScope {
 
-  private val quotesDao: QuotesDao
-  private val job: Job
+    private val quotesDao: QuotesDao
+    private val job: Job
 
-  override val coroutineContext: CoroutineContext
-    get() = Dispatchers.Main + job
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Main + job
 
-  init {
-    val database = RWQuotesDatabase.getInstance(application.applicationContext)
-    quotesDao = database!!.quotesDao()
-    job = Job()
-  }
-
-  override fun insert(quote: Quote) {
-    launch(Dispatchers.IO) {
-      quotesDao.insertQuote(quote)
+    init {
+        val database = RWQuotesDatabase.getInstance(application.applicationContext)
+        quotesDao = database!!.quotesDao()
+        job = Job()
     }
-  }
 
-  override fun update(quote: Quote) {
-    launch(Dispatchers.IO) { quotesDao.updateQuote(quote) }
-  }
+    override fun insert(quote: Quote) {
+        launch(Dispatchers.IO) {
+            quotesDao.insertQuote(quote)
+        }
+    }
 
-  override fun delete(quote: Quote) {
-    launch(Dispatchers.IO) { quotesDao.deleteQuote(quote) }
-  }
+    override fun update(quote: Quote) {
+        launch(Dispatchers.IO) { quotesDao.updateQuote(quote) }
+    }
 
-  override fun getQuotes(): Flow<List<Quote>> {
-    return quotesDao.getQuotes()
-  }
+    override fun delete(quote: Quote) {
+        launch(Dispatchers.IO) { quotesDao.deleteQuote(quote) }
+    }
 
+    override fun getQuotes(): Flow<List<Quote>> {
+        return quotesDao.getQuotes()
+    }
 }

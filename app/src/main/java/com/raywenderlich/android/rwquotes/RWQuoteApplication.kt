@@ -37,16 +37,15 @@ package com.raywenderlich.android.rwquotes
 import android.app.Application
 import timber.log.Timber
 
-
 /**
  * Created by Enzo Lizama Paredes on 7/24/20.
  * Contact: lizama.enzo@gmail.com
  */
 
-class RWQuoteApplication : Application(){
+class RWQuoteApplication : Application() {
 
-  override fun onCreate() {
-    super.onCreate()
-    if (BuildConfig.DEBUG) Timber.plant(Timber.DebugTree())
-  }
+    override fun onCreate() {
+        super.onCreate()
+        if (BuildConfig.DEBUG) Timber.plant(Timber.DebugTree())
+    }
 }

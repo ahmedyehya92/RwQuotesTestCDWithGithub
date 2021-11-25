@@ -40,8 +40,6 @@ import android.annotation.SuppressLint
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.raywenderlich.android.rwquotes.data.QuotesRepository
-import kotlinx.coroutines.CoroutineDispatcher
-
 
 /**
  * Created by Enzo Lizama Paredes on 7/24/20.
@@ -52,8 +50,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 class QuoteViewModelFactory(
     private val repository: QuotesRepository
 ) : ViewModelProvider.Factory {
-  override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-    return QuotesViewModel(repository) as T
-  }
-
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        return QuotesViewModel(repository) as T
+    }
 }

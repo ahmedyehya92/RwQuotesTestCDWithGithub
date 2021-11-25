@@ -36,20 +36,18 @@ package com.raywenderlich.android.rwquotes.data
 
 import kotlinx.coroutines.flow.Flow
 
-
 /**
  * Created by Enzo Lizama Paredes on 7/24/20.
  * Contact: lizama.enzo@gmail.com
  */
 
-
 interface QuotesRepository {
 
-  fun insert(quote: Quote)
+    fun insert(quote: Quote)
 
-  fun update(quote: Quote)
+    fun update(quote: Quote)
 
-  fun delete(quote: Quote)
+    fun delete(quote: Quote)
 
-  fun getQuotes(): Flow<List<Quote>>
+    fun getQuotes(): Flow<List<Quote>>
 }

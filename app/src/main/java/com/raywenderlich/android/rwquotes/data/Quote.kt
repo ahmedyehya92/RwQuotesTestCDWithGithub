@@ -37,9 +37,6 @@ package com.raywenderlich.android.rwquotes.data
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import androidx.room.migration.Migration
-import androidx.sqlite.db.SupportSQLiteDatabase
-
 
 /**
  * Created by Enzo Lizama Paredes on 7/23/20.
@@ -54,5 +51,3 @@ data class Quote(
     @ColumnInfo(name = "date") val date: String = "",
     @ColumnInfo(name = "stars") val stars: Int = 0
 )
-
-
