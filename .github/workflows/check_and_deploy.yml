@@ -22,7 +22,7 @@ jobs:
           git config --global user.name "ahmedyehya92"
           git add .
           git commit -m "Fixing Formats"
-          git push
+          git push origin HEAD:<master>
 
   update_branch_tags:
     needs: [ code_style_format ]

@@ -56,7 +56,7 @@ import com.raywenderlich.android.rwquotes.ui.viewmodel.QuotesViewModel
 class MainActivity : AppCompatActivity() {
 
     private lateinit var quotesViewModel: QuotesViewModel
-    private lateinit var quoteAdapter: QuoteAdapter
+      private lateinit var quoteAdapter: QuoteAdapter
 
     private lateinit var activityMainBinding: ActivityMainBinding
 
