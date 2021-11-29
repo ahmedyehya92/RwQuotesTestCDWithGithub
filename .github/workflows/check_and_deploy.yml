@@ -21,7 +21,15 @@ jobs:
           git add .
           git commit -m "Fixing Formats"
           git push
-          git tag 0.0.1
+
+  update_branch_tags:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Bump version
+        uses: oflynned/Android-Semantic-Release@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 
   ## 3
   unit_tests:
