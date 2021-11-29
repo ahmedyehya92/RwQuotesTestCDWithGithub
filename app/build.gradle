@@ -1,8 +1,14 @@
+
+plugins {
+  id 'com.gladed.androidgitversion' version '0.4.14'
+}
+
 apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-kapt'
+
 
 android {
   compileSdkVersion rootProject.ext.compileSdkVersion
@@ -10,8 +16,8 @@ android {
     applicationId "com.raywenderlich.android.rwquotes"
     minSdkVersion rootProject.ext.minSdkVersion
     targetSdkVersion rootProject.ext.targetSdkVersion
-    versionCode 9
-    versionName "1.1"
+    versionCode androidGitVersion.code()
+    versionName androidGitVersion.name()
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
     javaCompileOptions {
