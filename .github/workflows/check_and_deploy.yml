@@ -23,8 +23,10 @@ jobs:
           git push
 
   update_branch_tags:
+    needs: [ code_style_format ]
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Bump version
         uses: oflynned/Android-Semantic-Release@master
         env:
@@ -33,7 +35,7 @@ jobs:
 
   ## 3
   unit_tests:
-    needs: [ code_style_format ]
+    needs: [ update_branch_tags ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
